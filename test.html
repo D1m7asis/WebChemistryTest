@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Химический тест</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .question input, .question textarea, .question select {
+            margin: 5px 0;
+        }
+        .question p {
+            margin: 5px 0;
+        }
+        .results {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест по химии</h1>
+    <form id="quizForm">
+        <!-- Вопросы с одним вариантом ответа -->
+        <div class="question">
+            <h3>1. Какая частица находится в ядре атома?</h3>
+            <input type="radio" name="q1" value="a"> Электрон<br>
+            <input type="radio" name="q1" value="b"> Протон<br>
+            <input type="radio" name="q1" value="c"> Нейтрон<br>
+            <input type="radio" name="q1" value="d"> Кварк<br>
+        </div>
+        <div class="question">
+            <h3>2. Какой элемент является металлом?</h3>
+            <input type="radio" name="q2" value="a"> Углерод<br>
+            <input type="radio" name="q2" value="b"> Кислород<br>
+            <input type="radio" name="q2" value="c"> Натрий<br>
+            <input type="radio" name="q2" value="d"> Азот<br>
+        </div>
+        <div class="question">
+            <h3>3. Что такое молекула воды?</h3>
+            <input type="radio" name="q3" value="a"> H2O<br>
+            <input type="radio" name="q3" value="b"> CO2<br>
+            <input type="radio" name="q3" value="c"> O2<br>
+            <input type="radio" name="q3" value="d"> N2<br>
+        </div>
+
+        <!-- Вопросы с несколькими вариантами ответа -->
+        <div class="question">
+            <h3>4. Какие вещества являются кислотами?</h3>
+            <input type="checkbox" name="q4" value="a"> HCl<br>
+            <input type="checkbox" name="q4" value="b"> NaOH<br>
+            <input type="checkbox" name="q4" value="c"> H2SO4<br>
+            <input type="checkbox" name="q4" value="d"> CH4<br>
+        </div>
+        <div class="question">
+            <h3>5. Какие вещества являются щелочами?</h3>
+            <input type="checkbox" name="q5" value="a"> KOH<br>
+            <input type="checkbox" name="q5" value="b"> NaCl<br>
+            <input type="checkbox" name="q5" value="c"> NaOH<br>
+            <input type="checkbox" name="q5" value="d"> HNO3<br>
+        </div>
+        <div class="question">
+            <h3>6. Какие вещества являются оксидами?</h3>
+            <input type="checkbox" name="q6" value="a"> CO2<br>
+            <input type="checkbox" name="q6" value="b"> H2O<br>
+            <input type="checkbox" name="q6" value="c"> SO2<br>
+            <input type="checkbox" name="q6" value="d"> NH3<br>
+        </div>
+
+        <!-- Вопросы с написанием правильного ответа -->
+        <div class="question">
+            <h3>7. Напишите химическую формулу воды:</h3>
+            <input type="text" name="q7">
+        </div>
+        <div class="question">
+            <h3>8. Напишите химическую формулу метана:</h3>
+            <input type="text" name="q8">
+        </div>
+        <div class="question">
+            <h3>9. Напишите химическую формулу углекислого газа:</h3>
+            <input type="text" name="q9">
+        </div>
+
+        <!-- Вопросы с пропущенными словами -->
+        <div class="question">
+            <h3>10. Заполните пропуски: H2SO4 - это _______ кислота.</h3>
+            <input type="text" name="q10">
+        </div>
+        <div class="question">
+            <h3>11. Заполните пропуски: HCl - это _______ кислота.</h3>
+            <input type="text" name="q11">
+        </div>
+        <div class="question">
+            <h3>12. Заполните пропуски: NaOH - это _______ основание.</h3>
+            <input type="text" name="q12">
+        </div>
+
+        <!-- Вопросы с сопоставлением соответствий -->
+        <div class="question">
+            <h3>13. Соотнесите элемент с его символом:</h3>
+            <p>Кислород</p>
+            <select name="q13_1">
+                <option value="O">O</option>
+                <option value="H">H</option>
+                <option value="C">C</option>
+                <option value="N">N</option>
+            </select>
+            <p>Водород</p>
+            <select name="q13_2">
+                <option value="O">O</option>
+                <option value="H">H</option>
+                <option value="C">C</option>
+                <option value="N">N</option>
+            </select>
+            <p>Углерод</p>
+            <select name="q13_3">
+                <option value="O">O</option>
+                <option value="H">H</option>
+                <option value="C">C</option>
+                <option value="N">N</option>
+            </select>
+        </div>
+        <div class="question">
+            <h3>14. Соотнесите элемент с его символом:</h3>
+            <p>Азот</p>
+            <select name="q14_1">
+                <option value="O">O</option>
+                <option value="H">H</option>
+                <option value="C">C</option>
+                <option value="N">N</option>
+            </select>
+            <p>Кальций</p>
+            <select name="q14_2">
+                <option value="Ca">Ca</option>
+                <option value="H">H</option>
+                <option value="C">C</option>
+                <option value="N">N</option>
+            </select>
+            <p>Фтор</p>
+            <select name="q14_3">
+                <option value="O">O</option>
+                <option value="H">H</option>
+                <option value="F">F</option>
+                <option value="N">N</option>
+            </select>
+        </div>
+        <div class="question">
+            <h3>15. Соотнесите элемент с его символом:</h3>
+            <p>Натрий</p>
+            <select name="q15_1">
+                <option value="Na">Na</option>
+                <option value="H">H</option>
+                <option value="C">C</option>
+                <option value="N">N</option>
+            </select>
+            <p>Железо</p>
+            <select name="q15_2">
+                <option value="Fe">Fe</option>
+                <option value="H">H</option>
+                <option value="C">C</option>
+                <option value="N">N</option>
+            </select>
+            <p>Сера</p>
+            <select name="q15_3">
+                <option value="O">O</option>
+                <option value="H">H</option>
+                <option value="S">S</option>
+                <option value="N">N</option>
+            </select>
+        </div>
+
+        <input type="button" value="Проверить ответы" onclick="checkAnswers()">
+    </form>
+
+    <div class="results" id="results">
+        <h2>Результаты теста</h2>
+        <p id="score"></p>
+        <p id="explanation"></p>
+        <button onclick="downloadResults()">Скачать результаты</button>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let correctAnswers = {
+                q1: 'b',
+                q2: 'c',
+                q3: 'a',
+                q4: ['a', 'c'],
+                q5: ['a', 'c'],
+                q6: ['a', 'c'],
+                q7: 'H2O',
+                q8: 'CH4',
+                q9: 'CO2',
+                q10: 'серная',
+                q11: 'соляная',
+                q12: 'щелочное',
+                q13_1: 'O',
+                q13_2: 'H',
+                q13_3: 'C',
+                q14_1: 'N',
+                q14_2: 'Ca',
+                q14_3: 'F',
+                q15_1: 'Na',
+                q15_2: 'Fe',
+                q15_3: 'S'
+            };
+
+            let explanations = {
+                q1: 'Протоны находятся в ядре атома.',
+                q2: 'Натрий является металлом.',
+                q3: 'Молекула воды имеет формулу H2O.',
+                q4: 'HCl и H2SO4 являются кислотами.',
+                q5: 'KOH и NaOH являются щелочами.',
+                q6: 'CO2 и SO2 являются оксидами.',
+                q7: 'Химическая формула воды - H2O.',
+                q8: 'Химическая формула метана - CH4.',
+                q9: 'Химическая формула углекислого газа - CO2.',
+                q10: 'H2SO4 - это серная кислота.',
+                q11: 'HCl - это соляная кислота.',
+                q12: 'NaOH - это щелочное основание.',
+                q13: 'Кислород - O, Водород - H, Углерод - C.',
+                q14: 'Азот - N, Кальций - Ca, Фтор - F.',
+                q15: 'Натрий - Na, Железо - Fe, Сера - S.'
+            };
+
+            let form = document.getElementById('quizForm');
+            let score = 0;
+            let totalQuestions = 15;
+            let resultText = '';
+            let explanationText = '';
+
+            // Проверка каждого вопроса
+            // Вопросы с одним вариантом ответа
+            if (form.q1.value === correctAnswers.q1) {
+                score++;
+                resultText += '1. Верно. ';
+            } else {
+                resultText += '1. Неверно. ';
+            }
+            explanationText += explanations.q1 + '<br>';
+
+            if (form.q2.value === correctAnswers.q2) {
+                score++;
+                resultText += '2. Верно. ';
+            } else {
+                resultText += '2. Неверно. ';
+            }
+            explanationText += explanations.q2 + '<br>';
+
+            if (form.q3.value === correctAnswers.q3) {
+                score++;
+                resultText += '3. Верно. ';
+            } else {
+                resultText += '3. Неверно. ';
+            }
+            explanationText += explanations.q3 + '<br>';
+
+            // Вопросы с несколькими вариантами ответа
+            let q4Answers = Array.from(form.q4).filter(input => input.checked).map(input => input.value);
+            if (q4Answers.sort().toString() === correctAnswers.q4.sort().toString()) {
+                score++;
+                resultText += '4. Верно. ';
+            } else {
+                resultText += '4. Неверно. ';
+            }
+            explanationText += explanations.q4 + '<br>';
+
+            let q5Answers = Array.from(form.q5).filter(input => input.checked).map(input => input.value);
+            if (q5Answers.sort().toString() === correctAnswers.q5.sort().toString()) {
+                score++;
+                resultText += '5. Верно. ';
+            } else {
+                resultText += '5. Неверно. ';
+            }
+            explanationText += explanations.q5 + '<br>';
+
+            let q6Answers = Array.from(form.q6).filter(input => input.checked).map(input => input.value);
+            if (q6Answers.sort().toString() === correctAnswers.q6.sort().toString()) {
+                score++;
+                resultText += '6. Верно. ';
+            } else {
+                resultText += '6. Неверно. ';
+            }
+            explanationText += explanations.q6 + '<br>';
+
+            // Вопросы с написанием правильного ответа
+            if (form.q7.value.trim().toUpperCase() === correctAnswers.q7) {
+                score++;
+                resultText += '7. Верно. ';
+            } else {
+                resultText += '7. Неверно. ';
+            }
+            explanationText += explanations.q7 + '<br>';
+
+            if (form.q8.value.trim().toUpperCase() === correctAnswers.q8) {
+                score++;
+                resultText += '8. Верно. ';
+            } else {
+                resultText += '8. Неверно. ';
+            }
+            explanationText += explanations.q8 + '<br>';
+
+            if (form.q9.value.trim().toUpperCase() === correctAnswers.q9) {
+                score++;
+                resultText += '9. Верно. ';
+            } else {
+                resultText += '9. Неверно. ';
+            }
+            explanationText += explanations.q9 + '<br>';
+
+            // Вопросы с пропущенными словами
+            if (form.q10.value.trim().toLowerCase() === correctAnswers.q10) {
+                score++;
+                resultText += '10. Верно. ';
+            } else {
+                resultText += '10. Неверно. ';
+            }
+            explanationText += explanations.q10 + '<br>';
+
+            if (form.q11.value.trim().toLowerCase() === correctAnswers.q11) {
+                score++;
+                resultText += '11. Верно. ';
+            } else {
+                resultText += '11. Неверно. ';
+            }
+            explanationText += explanations.q11 + '<br>';
+
+            if (form.q12.value.trim().toLowerCase() === correctAnswers.q12) {
+                score++;
+                resultText += '12. Верно. ';
+            } else {
+                resultText += '12. Неверно. ';
+            }
+            explanationText += explanations.q12 + '<br>';
+
+            // Вопросы с сопоставлением соответствий
+            if (form.q13_1.value === correctAnswers.q13_1 && form.q13_2.value === correctAnswers.q13_2 && form.q13_3.value === correctAnswers.q13_3) {
+                score++;
+                resultText += '13. Верно. ';
+            } else {
+                resultText += '13. Неверно. ';
+            }
+            explanationText += explanations.q13 + '<br>';
+
+            if (form.q14_1.value === correctAnswers.q14_1 && form.q14_2.value === correctAnswers.q14_2 && form.q14_3.value === correctAnswers.q14_3) {
+                score++;
+                resultText += '14. Верно. ';
+            } else {
+                resultText += '14. Неверно. ';
+            }
+            explanationText += explanations.q14 + '<br>';
+
+            if (form.q15_1.value === correctAnswers.q15_1 && form.q15_2.value === correctAnswers.q15_2 && form.q15_3.value === correctAnswers.q15_3) {
+                score++;
+                resultText += '15. Верно. ';
+            } else {
+                resultText += '15. Неверно. ';
+            }
+            explanationText += explanations.q15 + '<br>';
+
+            // Подсчет процентов правильных ответов
+            let percentage = (score / totalQuestions) * 100;
+
+            // Отображение результатов
+            document.getElementById('score').innerText = `Вы ответили правильно на ${score} из ${totalQuestions} вопросов (${percentage.toFixed(2)}%).`;
+            document.getElementById('explanation').innerHTML = explanationText;
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function downloadResults() {
+            let score = document.getElementById('score').innerText;
+            let explanation = document.getElementById('explanation').innerHTML.replace(/<br>/g, '\n');
+            let text = `${score}\n\n${explanation}`;
+            let blob = new Blob([text], { type: 'text/plain' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'results.txt';
+            link.click();
+        }
+    </script>
+</body>
+</html>
